@@ -7,8 +7,8 @@ require 'colorize'
 article = Hash.new #holds the article title, body and all associated image links
 
 agent = Mechanize.new
-page1 = agent.get('https://jumachris3.wixsite.com/ultimate-gc/blog')
-page2 = agent.get('https://jumachris3.wixsite.com/ultimate-gc/blog/page/1')
+page1 = agent.get('https://jumachris3.wixsite.com/ultimate-gc/blog') #The wix site I was scraping
+page2 = agent.get('https://jumachris3.wixsite.com/ultimate-gc/blog/page/1') #page 2 of the wix site
 
 pages = [page2, page1] #array of pages to go through
 
@@ -103,11 +103,11 @@ end
 links = getArticleLinks(pages)
 titles = getArticleTitles(pages)
 imageSrc = getImageSrc(links)
-imageSource = JSON.pretty_generate(imageSrc)
-content = File.open('imageSource.json', 'w')
-content.write(imageSource)
+imageSource = JSON.pretty_generate(imageSrc) #creates a formatted JSON doc
+content = File.open('imageSource.json', 'w') #creates a JSON file
+content.write(imageSource) #Writes the Json file
 content.close
 #system("vim imageSource.json")
-downloadImages(imageSrc)
+downloadImages(imageSrc) #downloads the images
 puts "Scrape DONE".green
 #add a progress bar
