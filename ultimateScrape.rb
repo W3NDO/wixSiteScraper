@@ -15,7 +15,7 @@ pages = [page2, page1] #array of pages to go through
 def getArticleLinks(arr) #Gets the links of the articles to be visited
 	links =[]
 	puts "getting article links"
-	for i in 0..arr.length()-1
+        for i in 0...arr.length()
 		arr[i].css('a span').each do |link|
 			if link.text.strip == "Read More"
 				puts "...".blue
@@ -30,7 +30,7 @@ end
 def getArticleTitles(arr) #Gets the titles of the articles
 	titles = []
 	puts "Getting Article titles".blue
-	for i in 0..arr.length()-1
+        for i in 0...arr.length()
 		arr[i].css('h2').each do |title|
 			puts "...".blue
 			titles << title.text.strip
@@ -46,7 +46,7 @@ def getImageSrc(arrayOfLinks) #Gets the src of the images for each article
 	agent = Mechanize.new
 	imageSrc = Hash.new
 
-	for i in 0..arrayOfLinks.length()-1
+        for i in 0...arrayOfLinks.length()
 		articleNumber += 1
 		regex = /(inner)?comp./ 
 		artArr = []
